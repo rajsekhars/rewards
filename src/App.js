@@ -15,14 +15,6 @@ const TRANSACTIONS = [
   { id: 12, customerId: 3, customerName: "Charlie", month: "Mar", amount: 90  }
   ];
 
-  function getTransactions() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(TRANSACTIONS);
-      }, 1000); 
-    });
-  }
-
   function calculatePoints(amount) {
     var points = 0;
   
@@ -67,9 +59,8 @@ const App = () => {
 
     useEffect(()=>{
         async function load() {
-            const data = await getTransactions();
-            setTransactions(data);
-            const result = calculateSummary(data);
+            setTransactions(TRANSACTIONS);
+            const result = calculateSummary(TRANSACTIONS);
             setSummary(result);
             setLoading(false);
           }
